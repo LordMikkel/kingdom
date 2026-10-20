@@ -1,0 +1,22 @@
+<!-- Network of the Kali lab (kali.sh setup). NAT through the host, but the
+     firewall (/etc/nftables.conf, virbr-kali) only lets it out through the
+     VPN. libvirt's own DNS is off: DHCP hands out the VPN's DNS instead. -->
+<network xmlns:dnsmasq='http://libvirt.org/schemas/network/dnsmasq/1.0'>
+  <name>kali-vpn</name>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='virbr-kali' stp='on' delay='0'/>
+  <dns enable='no'/>
+  <ip address='10.66.66.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='10.66.66.10' end='10.66.66.50'/>
+      <host mac='52:54:00:fd:12:ab' name='kali' ip='10.66.66.23'/>
+    </dhcp>
+  </ip>
+  <dnsmasq:options>
+    <dnsmasq:option value='dhcp-option=option:dns-server,10.2.0.1'/>
+  </dnsmasq:options>
+</network>

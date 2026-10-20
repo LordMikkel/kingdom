@@ -1,0 +1,6 @@
+; Skip DNSSEC validation for google.com (negative trust anchor).
+; google.com is not signed, and behind the Proton VPN resolver (10.2.0.1)
+; systemd-resolved cannot prove that ("failed-auxiliary"), so names like
+; youtube-ui.l.google.com never resolve: music.youtube.com and Pear stay
+; black. DNSSEC stays strict (DNSSEC=yes) for every other domain.
+google.com

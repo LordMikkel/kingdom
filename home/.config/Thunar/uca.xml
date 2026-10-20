@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1710575157271461-1</unique-id>
+	<command>foot -D %f</command>
+	<description>Open the current directory in foot</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>view-reveal-symbolic</icon>
+	<name>Quick look</name>
+	<submenu></submenu>
+	<unique-id>1790554000000000-1</unique-id>
+	<command>sushi %f</command>
+	<description>Preview the file (Sushi), like Space in Nautilus</description>
+	<range>1-1</range>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>

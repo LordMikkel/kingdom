@@ -1,0 +1,7 @@
+[Unit]
+Description=Restart voxtype if it is stuck in its audio error loop
+After=voxtype.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/Scripts/voxtype-watchdog.sh

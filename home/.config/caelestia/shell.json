@@ -1,0 +1,304 @@
+{
+    "appearance": {
+        "transparency": {
+            "enabled": false
+        }
+    },
+    "background": {
+        "wallpaperEnabled": true
+    },
+    "bar": {
+        "activeWindow": {
+            "compact": false,
+            "inverted": false,
+            "showOnHover": true
+        },
+        "clock": {
+            "background": false,
+            "showDate": true,
+            "showIcon": true,
+            "showSeconds": false
+        },
+        "entries": [
+            {
+                "enabled": true,
+                "id": "logo"
+            },
+            {
+                "enabled": true,
+                "id": "workspaces"
+            },
+            {
+                "enabled": true,
+                "id": "spacer"
+            },
+            {
+                "enabled": true,
+                "id": "activeWindow"
+            },
+            {
+                "enabled": true,
+                "id": "spacer"
+            },
+            {
+                "enabled": true,
+                "id": "tray"
+            },
+            {
+                "enabled": true,
+                "id": "clock"
+            },
+            {
+                "enabled": true,
+                "id": "statusIcons"
+            },
+            {
+                "enabled": true,
+                "id": "power"
+            }
+        ],
+        "excludedScreens": [
+        ],
+        "persistent": true,
+        "popouts": {
+            "activeWindow": true,
+            "tray": true
+        },
+        "scrollActions": {
+            "volume": true,
+            "workspaces": true
+        },
+        "showOnHover": true,
+        "statusIcons": [
+            {
+                "enabled": true,
+                "id": "lockStatus"
+            },
+            {
+                "enabled": false,
+                "id": "audio"
+            },
+            {
+                "enabled": false,
+                "id": "microphone"
+            },
+            {
+                "enabled": true,
+                "id": "kbLayout"
+            },
+            {
+                "enabled": true,
+                "id": "network"
+            },
+            {
+                "enabled": true,
+                "id": "battery"
+            }
+        ],
+        "tray": {
+            "background": false,
+            "compact": true,
+            "recolour": false
+        },
+        "workspaces": {
+            "activeIndicator": true,
+            "activeTrail": true,
+            "occupiedBg": false,
+            "perMonitor": true,
+            "showUnoccupied": true,
+            "showWindows": true,
+            "showWindowsOnSpecialWorkspaces": true,
+            "shown": 5,
+            "specialWorkspaceIcons": [
+                {
+                    "flags": "",
+                    "icon": "star",
+                    "name": "special",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "forum",
+                    "name": "communication",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "music_cast",
+                    "name": "music",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "graphic_eq",
+                    "name": "todo",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "monitor_heart",
+                    "name": "sysmon",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "checklist",
+                    "name": "obsidian",
+                    "regex": ""
+                },
+                {
+                    "flags": "",
+                    "icon": "send",
+                    "name": "localsend",
+                    "regex": ""
+                }
+            ]
+        }
+    },
+    "dashboard": {
+        "enabled": true
+    },
+    "general": {
+        "apps": {
+            "explorer": [
+                "nautilus",
+                "--new-window"
+            ],
+            "terminal": [
+                "env",
+                "LD_PRELOAD=/usr/lib/libhardened_malloc.so",
+                "/usr/bin/ghostty",
+                "--gtk-single-instance=true",
+                "-e"
+            ]
+        },
+        "language": ""
+    },
+    "launcher": {
+        "enabled": true,
+        "hiddenApps": [
+            "alacarte",
+            "assistant",
+            "avahi-discover",
+            "awww",
+            "blackmagicraw-speedtest",
+            "bssh",
+            "bubble_evince - document viewer",
+            "bvnc",
+            "ca.desrt.dconf-editor",
+            "chromium",
+            "cmake-gui",
+            "com.mattjakeman.ExtensionManager",
+            "designer",
+            "gnome-system-monitor-kde",
+            "hypridle",
+            "hyprlock",
+            "hyprpolkitagent",
+            "jconsole-java-openjdk",
+            "jshell-java-openjdk",
+            "linguist",
+            "lstopo",
+            "matugen",
+            "nvidia-settings",
+            "org.freedesktop.IBus.Setup",
+            "org.gnome.Calendar",
+            "org.gnome.ColorProfileViewer",
+            "org.gnome.Console",
+            "org.gnome.dspy",
+            "org.gnome.Extensions",
+            "org.gnome.NetworkDisplays",
+            "org.gnome.Settings",
+            "org.gnome.Sysprof",
+            "org.gnome.Todo",
+            "org.gnome.tweaks",
+            "org.gnome.Yelp",
+            "org.torproject.torbrowser-launcher.settings",
+            "proton.vpn.app.gtk",
+            "qdbusviewer",
+            "qt6ct",
+            "qv4l2",
+            "qvidcap",
+            "rofi",
+            "rofi-theme-selector",
+            "thunar-settings",
+            "voxtype-configure",
+            "xfce4-about",
+            "xgps",
+            "xgpsspeed",
+            "yazi",
+            "zynaddsubfx-alsa",
+            "zynaddsubfx-jack",
+            "zynaddsubfx-jack-multi",
+            "zynaddsubfx-oss"
+        ],
+        "showOnHover": false,
+        "useFuzzy": {
+            "actions": false,
+            "apps": false,
+            "schemes": false,
+            "variants": false,
+            "wallpapers": false
+        }
+    },
+    "services": {
+        "clockFormat": "Auto",
+        "dataUnits": "Decimal",
+        "sensorUnits": "Celsius",
+        "weatherUnits": "Celsius"
+    },
+    "session": {
+        "commands": {
+            "hibernate": [
+                "systemctl",
+                "suspend"
+            ]
+        },
+        "icons": {
+            "hibernate": "bedtime"
+        }
+    },
+    "sidebar": {
+        "enabled": true
+    },
+    "utilities": {
+        "cards": {
+            "keepAwake": true,
+            "quickToggles": true
+        },
+        "quickToggles": [
+            {
+                "enabled": true,
+                "id": "wifi"
+            },
+            {
+                "enabled": false,
+                "id": "bluetooth"
+            },
+            {
+                "enabled": true,
+                "id": "mic"
+            },
+            {
+                "enabled": true,
+                "id": "settings"
+            },
+            {
+                "enabled": false,
+                "id": "gameMode"
+            },
+            {
+                "enabled": true,
+                "id": "dnd"
+            },
+            {
+                "enabled": false,
+                "id": "vpn"
+            }
+        ],
+        "vpn": {
+            "enabled": false,
+            "provider": [],
+            "selectedProvider": ""
+        }
+    }
+}

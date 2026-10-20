@@ -1,0 +1,19 @@
+# n8n from its official image, on demand: n8n-up / n8n-down (see .zshrc).
+# No [Install] section, so it never starts by itself. Data stays in ~/.n8n,
+# owned by you. Only this machine can reach it (127.0.0.1).
+[Unit]
+Description=n8n workflow automation (container)
+
+[Container]
+# GitHub registry: docker.n8n.io goes through Docker Hub, whose anonymous
+# pull limit is per IP and a shared VPN exit runs out of it.
+Image=ghcr.io/n8n-io/n8n:latest
+ContainerName=n8n
+PublishPort=127.0.0.1:5678:5678
+Volume=%h/.n8n:/home/node/.n8n
+UserNS=keep-id:uid=1000,gid=1000
+AutoUpdate=registry
+
+[Service]
+# The first start downloads the image.
+TimeoutStartSec=900

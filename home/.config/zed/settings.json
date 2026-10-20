@@ -1,0 +1,358 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // Installed by Zed on first start (see ~/.local/share/zed/extensions).
+  "auto_install_extensions": {
+    "assembly": true,
+    "catppuccin-icons": true,
+    "codebook": true,
+    "cyan-light-theme": true,
+    "dart": true,
+    "dockerfile": true,
+    "fish": true,
+    "git-firefly": true,
+    "github-classic": true,
+    "html": true,
+    "jetbrains-icons": true,
+    "log": true,
+    "lua": true,
+    "make": true,
+    "nginx": true,
+    "nord": true,
+    "sql": true,
+    "toml": true,
+    "xml": true
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "show_edit_predictions": false,
+  "cli_default_open_behavior": "existing_window",
+  "message_editor": {
+    "auto_replace_emoji_shortcode": true
+  },
+  "middle_click_paste": true,
+  "extend_comment_on_newline": true,
+  "inlay_hints": {
+    "enabled": false
+  },
+  "indent_guides": {},
+  "show_wrap_guides": true,
+  "preferred_line_length": 80,
+  "centered_layout": {
+    "right_padding": null,
+    "left_padding": null
+  },
+  "vim": {
+    "toggle_relative_line_numbers": false
+  },
+  "calls": {
+    "mute_on_join": true
+  },
+  "git": {
+    "blame": {
+      "show_avatar": true
+    },
+    "inline_blame": {
+      "min_column": 0,
+      "padding": 1,
+      "delay_ms": 2000
+    },
+    "disable_git": false,
+    "enable_diff": true,
+    "enable_status": true
+  },
+  "git_panel": {
+    "dock": "left",
+    "button": true
+  },
+  "outline_panel": {
+    "dock": "left",
+    "git_status": true,
+    "file_icons": true,
+    "default_width": 300.0
+  },
+  "zoomed_padding": true,
+  "focus_follows_mouse": {
+    "enabled": false
+  },
+  "use_system_window_tabs": false,
+  "preview_tabs": {
+    "enable_keep_preview_on_code_navigation": false,
+    "enable_preview_file_from_code_navigation": true,
+    "enable_preview_multibuffer_from_code_navigation": false,
+    "enable_preview_from_multibuffer": true,
+    "enable_preview_from_project_panel": true,
+    "enable_preview_from_file_finder": false,
+    "enabled": true
+  },
+  "tabs": {
+    "file_icons": false,
+    "git_status": false
+  },
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": false,
+    "show_tab_bar_buttons": true,
+    "show_nav_history_buttons": true,
+    "show": true
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_user_picture": true,
+    "show_user_menu": true,
+    "show_sign_in": true,
+    "show_project_items": true,
+    "show_branch_name": true,
+    "show_branch_status_icon": false
+  },
+  "search": {
+    "button": true
+  },
+  "diagnostics": {
+    "inline": {
+      "padding": 4
+    },
+    "button": true
+  },
+  "status_bar": {
+    "show_active_file": false,
+    "active_language_button": true,
+    "line_endings_button": false
+  },
+  "terminal": {
+    "copy_on_select": true,
+    "keep_selection_on_copy": true,
+    "toolbar": {
+      "breadcrumbs": false
+    },
+    "default_height": 320.0,
+    "default_width": 640.0,
+    "font_weight": 400.0,
+    "font_size": 16.0,
+    "shell": "system",
+    "show_count_badge": false,
+    "flexible": true,
+    "button": true
+  },
+  "cursor_shape": "bar",
+  "cursor_blink": true,
+  "agent_buffer_font_size": 15.0,
+  "agent_ui_font_size": 16.0,
+  "ui_font_weight": 400.0,
+  "ui_font_family": ".ZedSans",
+  "buffer_line_height": "comfortable",
+  "buffer_font_weight": 400.0,
+  "buffer_font_family": ".ZedMono",
+  "edit_predictions": {
+    "allow_data_collection": "no"
+  },
+  "agent": {
+    "show_turn_stats": false,
+    "sandbox_permissions": {
+      "network_hosts": [
+        "en.cppreference.com",
+        "github.com",
+        "wikipedia.org"
+      ]
+    },
+    "tool_permissions": {
+      "tools": {
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https?://en\\.cppreference\\.com"
+            }
+          ]
+        }
+      }
+    },
+    "auto_compact": {
+      "threshold": "80%"
+    },
+    "play_sound_when_agent_done": "always",
+    "inline_assistant_model": {
+      "provider": "opencode",
+      "model": "free/big-pickle",
+      "enable_thinking": false
+    },
+    "default_profile": "write",
+    "dock": "right",
+    "sidebar_side": "right",
+    "default_model": {
+      "provider": "opencode",
+      "model": "go/kimi-k2.7-code",
+      "enable_thinking": false
+    },
+    "favorite_models": [
+      {
+        "provider": "ollama",
+        "model": "qwen2.5-coder:latest",
+        "enable_thinking": false
+      },
+      {
+        "provider": "opencode",
+        "model": "free/big-pickle",
+        "enable_thinking": false
+      },
+      {
+        "provider": "opencode",
+        "model": "go/deepseek-v4-pro",
+        "enable_thinking": true,
+        "effort": "xhigh"
+      },
+      {
+        "provider": "opencode",
+        "model": "go/qwen3.7-max",
+        "enable_thinking": false
+      },
+      {
+        "provider": "opencode",
+        "model": "go/mimo-v2.5-pro",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "opencode",
+        "model": "go/glm-5.1",
+        "enable_thinking": false
+      }
+    ],
+    "model_parameters": []
+  },
+  "proxy": "",
+  "prettier": {
+    "allowed": false
+  },
+  "auto_indent_on_paste": true,
+  "icon_theme": {
+    "mode": "light",
+    "light": "Catppuccin Macchiato",
+    "dark": "JetBrains New UI Icons (Light)"
+  },
+  "project_panel": {
+    "folder_indicator": "chevron",
+    "auto_open": {
+      "on_drop": true,
+      "on_paste": true,
+      "on_create": true
+    },
+    "hide_hidden": false,
+    "hide_root": false,
+    "sticky_scroll": true,
+    "git_status_indicator": false,
+    "diagnostic_badges": true,
+    "scrollbar": {},
+    "bold_folder_labels": false,
+    "auto_reveal_entries": true,
+    "git_status": true,
+    "hide_gitignore": false,
+    "default_width": 220.0,
+    "button": true,
+    "file_icons": true,
+    "dock": "left"
+  },
+  "session": {
+    "trust_all_worktrees": false
+  },
+  "agent_servers": {
+    "opencode": {
+      "default_config_options": {
+        "mode": "plan",
+        "effort": "medium",
+        "model": "openai/gpt-5.5"
+      },
+      "favorite_config_option_values": {
+        "model": [
+          "openai/gpt-5.5",
+          "opencode-go/deepseek-v4-pro",
+          "opencode/nemotron-3-ultra-free",
+          "opencode/deepseek-v4-flash-free",
+          "opencode-go/mimo-v2.5-pro",
+          "opencode-go/kimi-k2.7-code",
+          "opencode-go/qwen3.7-plus"
+        ]
+      },
+      "type": "registry"
+    }
+  },
+  "language_models": {
+    "opencode": {
+      "show_free_models": true,
+      "show_go_models": true,
+      "show_zen_models": true
+    }
+  },
+  "vim_mode": false,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "sticky_scroll": {
+    "enabled": true
+  },
+  "relative_line_numbers": "disabled",
+  "diagnostics_max_severity": "hint",
+  "minimap": {
+    "show": "never"
+  },
+  "autosave": "on_focus_change",
+  "colorize_brackets": true,
+  "show_whitespaces": "boundary",
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+  "wrap_guides": [
+    85
+  ],
+  "soft_wrap": "none",
+  "hard_tabs": true,
+  "tab_size": 4,
+  "base_keymap": "VSCode",
+  "ui_font_size": 16.0,
+  "buffer_font_size": 16.0,
+  "lsp": {
+    "codebook": {
+      "initialization_options": {
+        "diagnosticSeverity": "warning"
+      }
+    }
+  },
+  "theme": {
+    "mode": "system",
+    "light": "Caelestia",
+    "dark": "VSCode Dark Modern+"
+  },
+  "context_servers": {
+    "codebase-memory-mcp": {
+      "command": "/usr/bin/codebase-memory-mcp"
+    },
+    "serena": {
+      "enabled": true,
+      "command": "/home/archer/.local/bin/serena",
+      "args": [
+        "start-mcp-server",
+        "--context",
+        "ide",
+        "--project-from-cwd",
+        "--open-web-dashboard",
+        "false"
+      ]
+    },
+    "github": {
+      "command": "/bin/sh",
+      "args": [
+        "-lc",
+        "GITHUB_PERSONAL_ACCESS_TOKEN=$(gh auth token) exec /usr/bin/github-mcp-server stdio --read-only --toolsets default,actions,notifications"
+      ]
+    },
+    "context7": {
+      "enabled": true,
+      "url": "https://mcp.context7.com/mcp/oauth"
+    }
+  }
+}

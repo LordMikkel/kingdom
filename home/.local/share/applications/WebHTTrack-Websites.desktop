@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Network;
+Terminal=false
+Name=Browse Mirrored Websites
+Comment=Browse Websites Mirrored by WebHTTrack
+Keywords=browse mirrored;
+Exec=webhttrack browse
+Icon=httrack
+# Helper launcher for WebHTTrack's browse mode, not a standalone app: keep it
+# out of software-center catalogs so it doesn't duplicate the main entry.
+X-AppStream-Ignore=true
+NotShowIn=Hyprland;
+X-Hypr-Hidden=true

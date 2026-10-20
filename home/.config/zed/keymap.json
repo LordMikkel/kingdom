@@ -1,0 +1,72 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-1": ["workspace::ActivatePane", 0],
+      "ctrl-2": ["workspace::ActivatePane", 1],
+      "ctrl-3": ["workspace::ActivatePane", 2]
+    }
+  },
+  {
+      "context": "Terminal",
+      "bindings": {
+        "ctrl-1": "terminal_panel::ToggleFocus",
+        "ctrl-2": "terminal_panel::ToggleFocus",
+        "ctrl-3": "terminal_panel::ToggleFocus",
+        "ctrl-/": "pane::SplitRight"
+      }
+    },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "ctrl-1": ["workspace::ActivatePane", 0],
+      "ctrl-2": ["workspace::ActivatePane", 1],
+      "ctrl-3": ["workspace::ActivatePane", 2],
+      "enter": "project_panel::OpenPermanent"
+    }
+  },
+  {
+    "context": "AssistantPanel",
+    "bindings": {
+      "ctrl-1": ["workspace::ActivatePane", 0],
+      "ctrl-2": ["workspace::ActivatePane", 1],
+      "ctrl-3": ["workspace::ActivatePane", 2]
+    }
+  },
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-shift-enter": [
+        "assistant::InlineAssist",
+        {
+          "prompt": "Fix the selected code. Return only the corrected replacement, with no markdown fences or explanation. Preserve tabs, style, and language."
+        }
+      ]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "ctrl-a": "editor::SelectAll"
+    }
+  },
+  {
+  "context": "Editor && mode == full",
+  "bindings": {
+    "tab": ["workspace::SendKeystrokes", "\t"]
+  }
+ }
+]

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Session theme (GNOME)
+Comment=Put the GNOME look back after a Caelestia session
+Exec=sh -c "exec ~/Scripts/session-theme.sh gnome"
+OnlyShowIn=GNOME;
+NoDisplay=true

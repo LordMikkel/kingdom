@@ -1,0 +1,39 @@
+# Local backups and transient files
+dotfiles-backups/
+
+# Claude Code worktrees of this repo.
+/.claude/
+*.bak
+*.tmp
+
+# Dependency/cache directories should never be vendored into dotfiles.
+node_modules/
+.cache/
+
+# VS Code volatile state
+home/.config/Code/User/globalStorage/
+home/.config/Code/User/workspaceStorage/
+home/.config/Code/User/History/
+
+# Ollama private/heavy state
+home/.ollama/id_ed25519
+home/.ollama/id_ed25519.pub
+home/.ollama/models/
+home/.ollama/cache/
+home/.ollama/history
+
+# Nested repositories copied from themes/extensions
+home/**/.git/
+*.local.dconf
+
+# Files Caelestia regenerates from the active color scheme
+home/.config/hypr/scheme/current.lua
+
+# Python bytecode from helper scripts
+__pycache__/
+
+# Written by the install-generic.sh package selector
+install/generic/deselected.txt
+
+# Editor tool caches
+.serena/

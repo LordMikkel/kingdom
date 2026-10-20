@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Proton VPN
+Exec=protonvpn-app
+Terminal=false
+Type=Application
+Icon=/home/archer/Pictures/Icons/proton.png
+StartupWMClass=proton.vpn.app.gtk
+Comment=Proton VPN GUI client
+Categories=Network;

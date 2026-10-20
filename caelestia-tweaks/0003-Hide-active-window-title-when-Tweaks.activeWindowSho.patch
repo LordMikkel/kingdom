@@ -1,0 +1,73 @@
+From d5ba02cb7bca8d10617ac020bebf63423d3a065a Mon Sep 17 00:00:00 2001
+From: LordMikkel <125906789+LordMikkel@users.noreply.github.com>
+Date: Sun, 27 Sep 2026 17:55:19 +0200
+Subject: [PATCH 3/8] Hide active window title when
+ Tweaks.activeWindowShowTitle is off
+
+---
+ modules/bar/components/ActiveWindow.qml |  4 ++--
+ utils/Tweaks.qml                        | 30 +++++++++++++++++++++++++
+ 2 files changed, 32 insertions(+), 2 deletions(-)
+ create mode 100644 utils/Tweaks.qml
+
+diff --git a/modules/bar/components/ActiveWindow.qml b/modules/bar/components/ActiveWindow.qml
+index e23cb6f..10d3dd4 100644
+--- a/modules/bar/components/ActiveWindow.qml
++++ b/modules/bar/components/ActiveWindow.qml
+@@ -37,7 +37,7 @@ Item {
+ 
+     clip: true
+     implicitWidth: Math.max(icon.implicitWidth, current.implicitHeight)
+-    implicitHeight: icon.implicitHeight + current.implicitWidth + current.anchors.topMargin
++    implicitHeight: icon.implicitHeight + (Tweaks.activeWindowShowTitle ? current.implicitWidth + current.anchors.topMargin : 0)
+ 
+     Loader {
+         asynchronous: true
+@@ -112,7 +112,7 @@ Item {
+ 
+         font: metrics.font
+         color: root.colour
+-        opacity: root.current === this ? 1 : 0
++        opacity: Tweaks.activeWindowShowTitle && root.current === this ? 1 : 0
+         horizontalAlignment: Text.AlignLeft
+ 
+         transform: [
+diff --git a/utils/Tweaks.qml b/utils/Tweaks.qml
+new file mode 100644
+index 0000000..f82c791
+--- /dev/null
++++ b/utils/Tweaks.qml
+@@ -0,0 +1,30 @@
++pragma Singleton
++
++import QtQuick
++import Quickshell
++import Quickshell.Io
++
++// Local tweaks not covered by the compiled config schema.
++// Stored in ~/.config/caelestia/tweaks.json
++Singleton {
++    id: root
++
++    property alias activeWindowShowTitle: adapter.activeWindowShowTitle
++
++    FileView {
++        path: `${Paths.config}/tweaks.json`
++        watchChanges: true
++        onFileChanged: reload()
++        onAdapterUpdated: writeAdapter()
++        onLoadFailed: err => {
++            if (err === FileViewError.FileNotFound)
++                writeAdapter();
++        }
++
++        JsonAdapter {
++            id: adapter
++
++            property bool activeWindowShowTitle: true
++        }
++    }
++}
+-- 
+2.56.0
+

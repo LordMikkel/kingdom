@@ -1,0 +1,77 @@
+* {
+  font-family: "Fira Code", "Noto Sans Mono", monospace;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+window {
+  margin: 0;
+  padding: 0;
+  border: 2px solid #4b4646;
+  border-radius: 3px;
+  background-color: #000000;
+  color: #f1ecec;
+}
+
+#outer-box {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid #2f2f2f;
+  background-color: #000000;
+}
+
+#input {
+  margin: 0 0 12px 0;
+  padding: 10px 12px;
+  border: 1px solid #60a5fa;
+  border-radius: 0;
+  background-color: #1f1f1f;
+  color: #f1ecec;
+  caret-color: #ff9f1c;
+  selection-background-color: #ff9f1c;
+  selection-color: #000000;
+}
+
+#input:focus {
+  border-color: #60a5fa;
+  background-color: #252525;
+  box-shadow: none;
+}
+
+#scroll {
+  margin: 0;
+  padding: 0;
+  border: 1px solid #2f2f2f;
+  background-color: #1a1a1a;
+}
+
+#inner-box {
+  margin: 0;
+  padding: 4px;
+  background-color: #1a1a1a;
+}
+
+#entry {
+  margin: 1px 0;
+  padding: 8px 10px;
+  border-radius: 0;
+  background-color: transparent;
+  color: #b7b1b1;
+}
+
+#entry:selected {
+  background-color: #ff9f1c;
+  color: #000000;
+}
+
+#entry:selected #text {
+  color: #000000;
+}
+
+#text {
+  color: inherit;
+}
+
+#img {
+  margin-right: 8px;
+}

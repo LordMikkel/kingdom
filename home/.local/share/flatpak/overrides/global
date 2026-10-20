@@ -1,0 +1,5 @@
+[Context]
+filesystems=~/.local/lib/hardened_malloc
+
+[Environment]
+LD_PRELOAD=/home/archer/.local/lib/hardened_malloc/libhardened_malloc.so

@@ -1,0 +1,125 @@
+{
+    "toggles": {
+        "communication": {
+            "discord": {
+                "enable": false
+            },
+            "whatsapp": {
+                "enable": false
+            },
+            "signal": {
+                "enable": true,
+                "match": [
+                    {
+                        "class": "signal"
+                    }
+                ],
+                "command": [
+                    "flatpak",
+                    "run",
+                    "org.signal.Signal"
+                ],
+                "move": true
+            }
+        },
+        "music": {
+            "spotify": {
+                "enable": false
+            },
+            "feishin": {
+                "enable": false
+            },
+            "pear": {
+                "enable": true,
+                "match": [
+                    {
+                        "class": "com.github.th-ch.youtube-music"
+                    }
+                ],
+                "command": [
+                    "youtube-music"
+                ],
+                "move": true
+            }
+        },
+        "todo": {
+            "todoist": {
+                "enable": false
+            },
+            "reaper": {
+                "enable": true,
+                "match": [
+                    {
+                        "class": "REAPER"
+                    }
+                ],
+                "command": [
+                    "reaper"
+                ],
+                "move": true
+            }
+        },
+        "sysmon": {
+            "btop": {
+                "enable": true,
+                "match": [
+                    {
+                        "title": "btop",
+                        "workspace": {
+                            "name": "special:sysmon"
+                        }
+                    }
+                ],
+                "command": [
+                    "env",
+                    "LD_PRELOAD=/usr/lib/libhardened_malloc.so",
+                    "ghostty",
+                    "--gtk-single-instance=false",
+                    "--title=btop",
+                    "-e",
+                    "btop"
+                ]
+            }
+        },
+        "obsidian": {
+            "obsidian": {
+                "enable": true,
+                "match": [
+                    {
+                        "class": "md.obsidian.Obsidian"
+                    }
+                ],
+                "command": [
+                    "flatpak",
+                    "run",
+                    "md.obsidian.Obsidian"
+                ],
+                "move": true
+            }
+        },
+        "localsend": {
+            "localsend": {
+                "enable": true,
+                "match": [
+                    {
+                        "class": "localsend"
+                    }
+                ],
+                "command": [
+                    "flatpak",
+                    "run",
+                    "org.localsend.localsend_app"
+                ],
+                "move": true
+            }
+        }
+    },
+    "record": {
+        "extraArgs": [
+            "-fallback-cpu-encoding",
+            "yes",
+            "-v",
+            "no"
+        ]
+    }
+}

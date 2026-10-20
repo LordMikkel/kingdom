@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/bin/*
+
+[Action]
+Description = Updating Firejail...
+When = PostTransaction
+Exec = /usr/bin/firecfg

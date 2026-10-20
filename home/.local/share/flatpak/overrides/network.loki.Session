@@ -1,0 +1,6 @@
+[Context]
+devices=!all;shm;dri
+filesystems=!~/.local/lib/hardened_malloc;xdg-run/dconf;~/.config/dconf:ro
+
+[Environment]
+LD_PRELOAD=

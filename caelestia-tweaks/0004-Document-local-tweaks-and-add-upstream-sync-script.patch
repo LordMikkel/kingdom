@@ -1,0 +1,117 @@
+From b111d435c431145f13178e4ae9b086db437bf3af Mon Sep 17 00:00:00 2001
+From: LordMikkel <125906789+LordMikkel@users.noreply.github.com>
+Date: Sun, 27 Sep 2026 17:55:19 +0200
+Subject: [PATCH 4/8] Document local tweaks and add upstream sync script
+
+---
+ TWEAKS.md        | 54 ++++++++++++++++++++++++++++++++++++++++++++++++
+ sync-upstream.sh | 36 ++++++++++++++++++++++++++++++++
+ 2 files changed, 90 insertions(+)
+ create mode 100644 TWEAKS.md
+ create mode 100755 sync-upstream.sh
+
+diff --git a/TWEAKS.md b/TWEAKS.md
+new file mode 100644
+index 0000000..d1c5386
+--- /dev/null
++++ b/TWEAKS.md
+@@ -0,0 +1,54 @@
++# Tweaks locales de Caelestia
++
++Esta carpeta es una copia de `/etc/xdg/quickshell/caelestia` (paquete
++`caelestia-shell`). Quickshell la carga en lugar de la original.
++
++## Cómo está organizado
++
++Es un repositorio git con dos ramas:
++
++- `upstream`: el shell tal cual viene del paquete, sin tocar.
++- `main`: `upstream` + un commit por cada tweak. Es la rama activa.
++
++`git log --oneline upstream..main` lista los tweaks y
++`git diff upstream main` muestra todos los cambios.
++
++## Después de actualizar caelestia-shell
++
++```sh
++~/.config/quickshell/caelestia/sync-upstream.sh
++```
++
++El script copia la versión nueva a `upstream` y hace `rebase` de `main`
++encima. Si upstream tocó las mismas líneas habrá conflictos: se resuelven a
++mano (`git status` los muestra), y luego `git add` + `git rebase --continue`.
++Con `git rebase --abort` se vuelve al estado anterior.
++
++Luego reinicia el shell (cierra sesión o `qs kill -c caelestia` y vuelve a
++lanzarlo).
++
++Para volver al Caelestia original basta con borrar esta carpeta.
++
++## Tweaks
++
++### Ajustes → Panels → Taskbar → Enabled
++Oculta la barra entera en todas las pantallas. Añade/quita `".*"` en
++`bar.excludedScreens` de `~/.config/caelestia/shell.json`.
++- `modules/nexus/pages/panels/TaskbarPanel.qml`
++
++### Ajustes → Panels → Taskbar → Active window → Enabled
++Activa/desactiva el módulo de ventana activa (`bar.entries`, id
++`activeWindow`).
++- `modules/nexus/pages/panels/taskbar/BarActiveWindow.qml`
++
++### Ajustes → Panels → Taskbar → Active window → Show title
++Muestra solo el icono de la ventana activa, sin el título. El esquema de
++`shell.json` está compilado y no admite claves nuevas, así que se guarda en
++`~/.config/caelestia/tweaks.json` (`activeWindowShowTitle`).
++- `utils/Tweaks.qml` (nuevo): singleton que lee/escribe `tweaks.json`
++- `modules/bar/components/ActiveWindow.qml`: oculta el título y ajusta la altura
++- `modules/nexus/pages/panels/taskbar/BarActiveWindow.qml`: el interruptor
++
++## Añadir un tweak nuevo
++
++Edita los archivos, documenta el cambio aquí y haz commit en `main`.
+diff --git a/sync-upstream.sh b/sync-upstream.sh
+new file mode 100755
+index 0000000..78d6cd2
+--- /dev/null
++++ b/sync-upstream.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Pull the installed caelestia-shell into the `upstream` branch and rebase the
++# local tweaks (branch `main`) on top of it. Run after updating the package.
++set -euo pipefail
++
++SRC=/etc/xdg/quickshell/caelestia
++REPO=$(cd "$(dirname "$0")" && pwd)
++cd "$REPO"
++
++if [[ -n $(git status --porcelain) ]]; then
++    echo "Hay cambios sin commitear. Haz commit o stash antes de sincronizar." >&2
++    exit 1
++fi
++
++ver=$(pacman -Q caelestia-shell | cut -d' ' -f2)
++tmp=$(mktemp -d)
++trap 'git worktree remove --force "$tmp" 2>/dev/null || true; rm -rf "$tmp"' EXIT
++
++git worktree add -q "$tmp" upstream
++rsync -a --delete --exclude .git "$SRC/" "$tmp/"
++git -C "$tmp" add -A
++if git -C "$tmp" diff --cached --quiet; then
++    echo "upstream ya está en $ver, nada que importar."
++else
++    git -C "$tmp" commit -q -m "upstream: caelestia-shell $ver"
++    echo "Importado caelestia-shell $ver en la rama upstream."
++fi
++
++git checkout -q main
++if git rebase upstream; then
++    echo "Tweaks reaplicados sobre $ver. Reinicia el shell para cargarlos."
++else
++    echo "Hay conflictos: resuélvelos, luego 'git add' + 'git rebase --continue'" >&2
++    echo "(o 'git rebase --abort' para volver al estado anterior)." >&2
++    exit 1
++fi
+-- 
+2.56.0
+

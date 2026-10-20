@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Geoclue Demo agent
+Comment=Disabled: no GeoClue agent outside GNOME (privacy)
+Hidden=true

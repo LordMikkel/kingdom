@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Blackmagic RAW Speed Test
+Icon=blackmagicraw-speedtest
+Path=/opt/resolve/BlackmagicRAWSpeedTest
+Exec=/opt/resolve/BlackmagicRAWSpeedTest/BlackmagicRAWSpeedTest  %f
+Terminal=false
+Categories=Video
+NotShowIn=Hyprland;
+X-Hypr-Hidden=true

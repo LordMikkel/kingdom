@@ -1,0 +1,7 @@
+# Extensions installed in the Zen profile at install time, by their
+# addons.mozilla.org name. Checked against the hash Mozilla publishes.
+ublock-origin
+privacy-badger17
+consent-o-matic
+vimium-ff
+multi-account-containers

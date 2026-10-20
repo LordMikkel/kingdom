@@ -1,0 +1,18 @@
+[Unit]
+Description=Stop voxtype before sleep and start it again after resume
+# On resume the audio device is reset and voxtype's feedback-beep stream breaks:
+# it then logs "alsa::poll() returned POLLERR" over 20000 times a minute, and
+# voxtype and journald burn a CPU core each until it is restarted. Stopping it
+# before sleep means it never holds a stream across the suspend.
+# The user watchdog (voxtype-watchdog.timer) stays as a fallback.
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/usr/bin/systemctl --user -M archer@ stop voxtype.service
+ExecStop=-/usr/bin/systemctl --user -M archer@ start voxtype.service
+
+[Install]
+WantedBy=sleep.target

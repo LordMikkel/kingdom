@@ -1,0 +1,11 @@
+app-hider@lynith.dev
+appindicatorsupport@rgcjonas.gmail.com
+blur-my-shell@aunetx
+drive-menu@gnome-shell-extensions.gcampax.github.com
+emoji-copy@felipeftn
+extension-list@tu.berry
+IP-Finder@linxgem33.com
+simple-taskbar@sultech
+status-area-horizontal-spacing@mathematical.coffee.gmail.com
+user-theme@gnome-shell-extensions.gcampax.github.com
+Vitals@CoreCoding.com

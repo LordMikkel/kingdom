@@ -1,0 +1,7 @@
+[Context]
+sockets=!cups;!x11
+devices=!all;shm;dri
+features=per-app-dev-shm
+
+[System Bus Policy]
+org.freedesktop.Avahi=none

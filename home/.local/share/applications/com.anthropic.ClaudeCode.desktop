@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Claude
+Comment=Open Claude Code in Ghostty
+Exec=/home/archer/Scripts/agent-ghostty.sh claude
+Icon=/home/archer/Pictures/Icons/claude-code-icon.png
+Terminal=false
+Categories=Development;TerminalEmulator;
+StartupWMClass=com.anthropic.ClaudeCode
+StartupNotify=true

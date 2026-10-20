@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = AIDE: accepting changes made by pacman...
+When = PostTransaction
+Exec = /usr/local/bin/aide-update

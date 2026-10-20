@@ -1,0 +1,3 @@
+# Installed here but kept out of the package lists.
+c_formatter_42
+norminette

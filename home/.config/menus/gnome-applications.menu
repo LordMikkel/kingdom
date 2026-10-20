@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Menu
+  PUBLIC '-//freedesktop//DTD Menu 1.0//EN'
+  'http://standards.freedesktop.org/menu-spec/menu-1.0.dtd'>
+<Menu>
+	<Name>Applications</Name>
+	<MergeFile type="parent">/etc/xdg/menus/gnome-applications.menu</MergeFile>
+	<Menu>
+		<Name>Internet</Name>
+		<Exclude>
+			<Filename>vivaldi-stable.desktop</Filename>
+		</Exclude>
+		<AppDir>/home/archer/.local/share/applications</AppDir>
+	</Menu>
+	<Menu>
+		<Name>Development</Name>
+		<AppDir>/home/archer/.local/share/applications</AppDir>
+		<Exclude>
+			<Filename>code-url-handler.desktop</Filename>
+		</Exclude>
+	</Menu>
+</Menu>

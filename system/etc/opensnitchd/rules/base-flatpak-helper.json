@@ -1,0 +1,40 @@
+{
+  "created": "2026-10-19T00:00:00+02:00",
+  "updated": "2026-10-19T00:00:00+02:00",
+  "name": "base-flatpak-helper",
+  "description": "Flathub (system installs)",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "/usr/lib/flatpak-system-helper",
+        "type": "simple",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.host",
+        "data": "^(|.*\\.)flathub\\.org$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.port",
+        "data": "^443$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      }
+    ],
+    "sensitive": false
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

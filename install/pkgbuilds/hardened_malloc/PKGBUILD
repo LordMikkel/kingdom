@@ -1,0 +1,37 @@
+# The AUR hardened_malloc, pinned to an upstream commit instead of tag 13:
+# tag 13 no longer builds with GCC 15+ (chacha.c nonstring error, new.cc with
+# the current libstdc++); upstream main does. Tested on 2026-10-18 with
+# GCC 16.2.1 and the makepkg flags of this machine: both variants build and
+# the 58 upstream tests pass. Back to the AUR package once it moves on.
+
+pkgname=hardened_malloc
+_commit=bf37d54560a62b50da72e8fda56abf04f23b5fd2
+pkgver=13.r20261018.bf37d54
+pkgrel=1
+pkgdesc="Hardened allocator designed for modern systems"
+arch=('x86_64')
+url="https://github.com/GrapheneOS/hardened_malloc"
+license=('MIT')
+depends=('gcc-libs')
+makedepends=('git')
+checkdepends=('python')
+provides=('libhardened_malloc.so' 'libhardened_malloc-light.so')
+# The commit hash pins the exact sources.
+source=("git+https://github.com/GrapheneOS/$pkgname#commit=$_commit")
+sha256sums=('SKIP')
+
+build() {
+  cd "$pkgname"
+  make VARIANT=default
+  make VARIANT=light
+}
+
+check() {
+  make -C "$pkgname" test
+}
+
+package() {
+  cd "$pkgname"
+  install -vDm755 -t "$pkgdir/usr/lib" out/libhardened_malloc.so out-light/libhardened_malloc-light.so
+  install -vDm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

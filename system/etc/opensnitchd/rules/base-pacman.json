@@ -1,0 +1,33 @@
+{
+  "created": "2026-10-19T00:00:00+02:00",
+  "updated": "2026-10-19T00:00:00+02:00",
+  "name": "base-pacman",
+  "description": "Package downloads (signed packages)",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "/usr/bin/pacman",
+        "type": "simple",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.port",
+        "data": "^(80|443)$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      }
+    ],
+    "sensitive": false
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

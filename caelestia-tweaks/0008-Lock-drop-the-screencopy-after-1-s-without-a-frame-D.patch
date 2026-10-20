@@ -1,0 +1,57 @@
+From e06ea587d2a588940a22b4c5ddae512788c3194b Mon Sep 17 00:00:00 2001
+From: LordMikkel <125906789+LordMikkel@users.noreply.github.com>
+Date: Wed, 30 Sep 2026 03:59:42 +0200
+Subject: [PATCH 8/8] Lock: drop the screencopy after 1 s without a frame (DPMS
+ off)
+
+---
+ TWEAKS.md                    |  4 +++-
+ modules/lock/LockSurface.qml | 14 +++++++++++++-
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/TWEAKS.md b/TWEAKS.md
+index 9440a57..26d2024 100644
+--- a/TWEAKS.md
++++ b/TWEAKS.md
+@@ -52,7 +52,9 @@ schema is compiled in and does not accept new keys, so this is stored in
+ ### Lock screen: wallpaper fallback behind the screencopy
+ The blurred wallpaper always sits under the screen capture, so a capture
+ that gets no frame (monitor off or going away) no longer shows the unblurred
+-desktop through the lock (`session_lock_xray`). Screens that are not
++desktop through the lock (`session_lock_xray`). A screencopy of an output
++with DPMS off never gets a frame and freezes the whole lock surface on it, so
++it is dropped after 1 s without a frame. Screens that are not
+ Wayland-backed are not captured at all, which can crash Hyprland <= 0.56.2
+ (upstream issue #1814). Meant to go upstream as a PR.
+ - `modules/lock/LockSurface.qml`
+diff --git a/modules/lock/LockSurface.qml b/modules/lock/LockSurface.qml
+index 8577710..80bdbdf 100644
+--- a/modules/lock/LockSurface.qml
++++ b/modules/lock/LockSurface.qml
+@@ -180,10 +180,22 @@ WlSessionLockSurface {
+         }
+ 
+         Loader {
++            id: screencopyLoader
++
++            property bool timedOut
++
+             anchors.fill: parent
+-            active: !Config.lock.useWallpaper
++            active: !Config.lock.useWallpaper && !timedOut
+             sourceComponent: screencopyBackground
+         }
++
++        // A screencopy of an output with DPMS off never gets a frame and keeps
++        // the whole surface from repainting, so drop it if no frame arrives
++        Timer {
++            interval: 1000
++            running: screencopyLoader.item?.hasContent === false
++            onTriggered: screencopyLoader.timedOut = true
++        }
+     }
+ 
+     Component {
+-- 
+2.56.0
+

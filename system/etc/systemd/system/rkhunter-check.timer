@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer for daily rkhunter scan
+
+[Timer]
+# Runs once a day
+OnCalendar=daily
+# If the PC was off during the scheduled time, run it immediately on boot
+Persistent=true
+
+[Install]
+WantedBy=timers.target

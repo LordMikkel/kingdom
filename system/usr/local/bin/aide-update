@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Manages the AIDE database. Used by the pacman hooks and manually.
+#   aide-update --pre   Before pacman: look for changes NOT made by pacman (warn only).
+#   aide-update         After pacman, or after reviewing a legitimate change:
+#                       accept the current state as the new baseline.
+set -uo pipefail
+DB=/var/lib/aide/aide.db.gz
+NEW=/var/lib/aide/aide.db.new.gz
+LOGS=/var/log/aide
+stamp=$(date +%Y%m%d-%H%M%S)
+mkdir -p "$LOGS"
+
+# AIDE exit codes: 0 no changes; 1-7 changes found (added/removed/changed); >=14 error.
+if [[ ${1:-} == --pre ]]; then
+  [[ -s $DB ]] || exit 0   # no baseline yet
+  aide --check >"$LOGS/pre-pacman-$stamp.log" 2>&1
+  r=$?
+  if (( r == 0 )); then
+    rm -f "$LOGS/pre-pacman-$stamp.log"
+  elif (( r <= 7 )); then
+    echo "  AIDE: changes NOT made by pacman found. Review $LOGS/pre-pacman-$stamp.log"
+  else
+    echo "  AIDE: check failed ($r). See $LOGS/pre-pacman-$stamp.log"
+  fi
+  exit 0   # never block pacman
+fi
+
+if [[ -s $DB ]]; then
+  aide --update >"$LOGS/update-$stamp.log" 2>&1
+else
+  aide --init >"$LOGS/update-$stamp.log" 2>&1
+fi
+r=$?
+if (( r <= 7 )) && [[ -s $NEW ]]; then
+  mv -f "$NEW" "$DB"
+  echo "  AIDE: database updated (details in $LOGS/update-$stamp.log)"
+else
+  echo "  AIDE: update failed ($r). See $LOGS/update-$stamp.log"
+  exit 1
+fi
+# Keep only the 30 most recent reports.
+ls -1t "$LOGS"/*.log 2>/dev/null | tail -n +31 | xargs -r rm -f

@@ -1,0 +1,13 @@
+[Unit]
+Description=Daily rkhunter scan
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rkhunter --cronjob --rwo
+# rkhunter exits 1 when it finds warnings. Keep the warning in logs without
+# marking the timer unit as failed.
+SuccessExitStatus=1
+
+[Install]
+WantedBy=multi-user.target

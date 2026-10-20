@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=Console
+Exec=/usr/bin/ghostty --gtk-single-instance=true --working-directory=%f
+Icon=com.mitchellh.ghostty
+Type=Application
+Terminal=false
+DBusActivatable=false
+Categories=System;TerminalEmulator;
+
+NotShowIn=Hyprland;
+X-Hypr-Hidden-Inplace=added
+[Desktop Action new-window]
+Name=New Window
+Exec=/usr/bin/ghostty --gtk-single-instance=true
+Icon=window-new
+
+[Desktop Action new-tab]
+Name=New Tab
+Exec=/usr/bin/ghostty --gtk-single-instance=true
+Icon=tab-new

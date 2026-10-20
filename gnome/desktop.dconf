@@ -1,0 +1,284 @@
+[a11y]
+always-show-universal-access-status=false
+
+[a11y/applications]
+screen-magnifier-enabled=false
+
+[a11y/interface]
+high-contrast=false
+show-status-shapes=false
+
+[a11y/keyboard]
+togglekeys-enable=false
+
+[a11y/magnifier]
+cross-hairs-length=58
+
+[app-folders]
+folder-children=['System', 'Utilities', 'YaST', 'Pardus', 'd6f81088-b87b-4cb1-9e3c-827853bae553', '99fc08fc-945a-4028-a005-c7978dcf41fb', 'fd6c8f42-fa9b-49c6-a8d8-1d900ec0b62e', 'a0aae06a-916a-4891-acf2-68f5cb261d7a', '76d985e0-9c88-478a-99eb-5853354f89b1']
+
+[app-folders/folders/76d985e0-9c88-478a-99eb-5853354f89b1]
+apps=['thunar-bulk-rename.desktop', 'io.github.bluemancz.hyprmod.desktop', 'com.saivert.pwvucontrol.desktop', 'thunar.desktop', 'org.pulseaudio.pavucontrol.desktop', 'micro.desktop', 'qt6ct.desktop', 'thunar-settings.desktop', 'uuctl.desktop', 'wiremix.desktop']
+name='Hyprland'
+translate=false
+
+[app-folders/folders/99fc08fc-945a-4028-a005-c7978dcf41fb]
+apps=['org.gnome.tweaks.desktop', 'ca.desrt.dconf-editor.desktop', 'alacarte.desktop', 'io.github.realmazharhussain.GdmSettings.desktop', 'input-remapper-gtk.desktop', 'nvidia-settings.desktop', 'org.gnome.Extensions.desktop', 'org.gnome.font-viewer.desktop', 'org.openrgb.OpenRGB.desktop']
+name='Configuration'
+translate=false
+
+[app-folders/folders/Pardus]
+categories=['X-Pardus-Apps']
+name='X-Pardus-Apps.directory'
+translate=true
+
+[app-folders/folders/System]
+apps=['org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Logs.desktop', 'org.freedesktop.MalcontentControl.desktop', 'org.gnome.Sysprof.desktop', 'org.gnome.SystemMonitor.desktop', 'btop.desktop', 'lstopo.desktop']
+name='X-GNOME-Shell-System.directory'
+translate=true
+
+[app-folders/folders/Utilities]
+apps=['org.gnome.Decibels.desktop', 'org.gnome.Papers.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.Showtime.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.Connections.desktop', 'org.gnome.Characters.desktop', 'vlc.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.Calls.desktop', 'org.gnome.Music.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Evince.desktop', 'org.gnome.SimpleScan.desktop', 'org.gnome.Yelp.desktop']
+name='X-GNOME-Shell-Utilities.directory'
+translate=true
+
+[app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
+[app-folders/folders/a0aae06a-916a-4891-acf2-68f5cb261d7a]
+apps=['comfy-desktop.desktop', 'blackmagicraw-player.desktop', 'blackmagicraw-speedtest.desktop', 'fm.reaper.Reaper.desktop', 'cockos-reaper.desktop', 'org.puredata.pd-gui.desktop', 'yoshimi.desktop', 'fluid.desktop', 'fltk-options.desktop', 'zynaddsubfx-oss.desktop', 'zynaddsubfx-jack.desktop', 'zynaddsubfx-jack-multi.desktop', 'zynaddsubfx-alsa.desktop', 'pianoteq-trial.desktop']
+name='Image & Sound'
+translate=false
+
+[app-folders/folders/d6f81088-b87b-4cb1-9e3c-827853bae553]
+apps=['cmake-gui.desktop', 'nvim.desktop', 'htop.desktop', 'vim.desktop', 'nvtop.desktop', 'org.gnome.Builder.desktop', 'org.gnome.Boxes.desktop', 'org.gnome.Software.desktop', 'torbrowser-settings.desktop', 'ranger.desktop', 'org.videolan.VLC.desktop', 'com.github.xournalpp.xournalpp.desktop', 'org.gnome.NetworkDisplays.desktop', 'com.github.muriloventuroso.pdftricks.desktop', 'org.gnome.Manuals.desktop', 'cppcheck-gui.desktop', 'jconsole-java-openjdk.desktop', 'jshell-java-openjdk.desktop', 'org.upscayl.Upscayl.desktop', 'voxtype-configure.desktop', 'org.torproject.torbrowser-launcher.settings.desktop']
+name='Tools'
+translate=false
+
+[app-folders/folders/fd6c8f42-fa9b-49c6-a8d8-1d900ec0b62e]
+apps=['org.gnome.dspy.desktop', 'qv4l2.desktop', 'qvidcap.desktop', 'assistant.desktop', 'qdbusviewer.desktop', 'linguist.desktop', 'designer.desktop', 'ipython.desktop']
+name='Others'
+translate=false
+
+[applications/terminal]
+exec='ghostty'
+exec-arg='-e'
+
+[background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/amber-l.jxl'
+picture-uri-dark='file:///usr/share/backgrounds/gnome/amber-d.jxl'
+primary-color='#ff7800'
+secondary-color='#000000'
+
+[break-reminders]
+selected-breaks=@as []
+
+[break-reminders/eyesight]
+play-sound=false
+
+[break-reminders/movement]
+duration-seconds=uint32 300
+interval-seconds=uint32 1800
+play-sound=false
+
+[calendar]
+show-weekdate=false
+
+[input-sources]
+mru-sources=[('xkb', 'us'), ('xkb', 'es')]
+sources=[('xkb', 'us'), ('xkb', 'es')]
+xkb-options=['terminate:ctrl_alt_bksp']
+
+[interface]
+accent-color='blue'
+clock-format='24h'
+clock-show-seconds=false
+clock-show-weekday=false
+color-scheme='prefer-dark'
+cursor-theme='Adwaita'
+gtk-enable-primary-paste=false
+icon-theme='Adwaita'
+overlay-scrolling=true
+show-battery-percentage=true
+toolkit-accessibility=false
+
+[media-handling]
+autorun-never=true
+
+[notifications]
+application-children=['vivaldi-stable', 'org-gnome-software', 'org-gnome-console', 'protonvpn', 'gnome-power-panel', 'gnome-about-panel', 'org-gnome-texteditor', 'code', 'gnome-wellbeing-panel', 'org-gnome-nautilus', 'torbrowser', 'signal-desktop', 'session-desktop', 'org-gnome-characters', 'org-gnome-showtime', 'com-brave-browser', 'network-loki-session', 'com-vivaldi-vivaldi', 'opensnitch-ui', 'org-gnome-extensions', 'org-localsend-localsend-app', 'org-gnome-settings', 'org-gnome-decibels', 'org-qbittorrent-qbittorrent', 'com-usebottles-bottles', 'dev-zed-zed', 'org-libreoffice-libreoffice-writer', 'org-upscayl-upscayl', 'org-libreoffice-libreoffice', 'com-mitchellh-ghostty', 'fm-reaper-reaper', 'cockos-reaper', 'org-gnome-builder', 'app-zen-browser-zen', 'com-anthropic-claudecode']
+show-banners=true
+
+[notifications/application/app-zen-browser-zen]
+application-id='app.zen_browser.zen.desktop'
+
+[notifications/application/cockos-reaper]
+application-id='cockos-reaper.desktop'
+
+[notifications/application/code]
+application-id='code.desktop'
+
+[notifications/application/com-anthropic-claudecode]
+application-id='com.anthropic.ClaudeCode.desktop'
+
+[notifications/application/com-brave-browser]
+application-id='com.brave.Browser.desktop'
+
+[notifications/application/com-mitchellh-ghostty]
+application-id='com.mitchellh.ghostty.desktop'
+
+[notifications/application/com-usebottles-bottles]
+application-id='com.usebottles.bottles.desktop'
+
+[notifications/application/com-vivaldi-vivaldi]
+application-id='com.vivaldi.Vivaldi.desktop'
+
+[notifications/application/dev-zed-zed]
+application-id='dev.zed.Zed.desktop'
+
+[notifications/application/fm-reaper-reaper]
+application-id='fm.reaper.Reaper.desktop'
+
+[notifications/application/gnome-about-panel]
+application-id='gnome-about-panel.desktop'
+
+[notifications/application/gnome-power-panel]
+application-id='gnome-power-panel.desktop'
+
+[notifications/application/gnome-wellbeing-panel]
+application-id='gnome-wellbeing-panel.desktop'
+
+[notifications/application/network-loki-session]
+application-id='network.loki.Session.desktop'
+
+[notifications/application/opensnitch-ui]
+application-id='opensnitch_ui.desktop'
+
+[notifications/application/org-gnome-builder]
+application-id='org.gnome.Builder.desktop'
+
+[notifications/application/org-gnome-characters]
+application-id='org.gnome.Characters.desktop'
+
+[notifications/application/org-gnome-console]
+application-id='org.gnome.Console.desktop'
+
+[notifications/application/org-gnome-decibels]
+application-id='org.gnome.Decibels.desktop'
+
+[notifications/application/org-gnome-extensions]
+application-id='org.gnome.Extensions.desktop'
+
+[notifications/application/org-gnome-nautilus]
+application-id='org.gnome.Nautilus.desktop'
+
+[notifications/application/org-gnome-settings]
+application-id='org.gnome.Settings.desktop'
+
+[notifications/application/org-gnome-showtime]
+application-id='org.gnome.Showtime.desktop'
+
+[notifications/application/org-gnome-software]
+application-id='org.gnome.Software.desktop'
+
+[notifications/application/org-gnome-texteditor]
+application-id='org.gnome.TextEditor.desktop'
+
+[notifications/application/org-libreoffice-libreoffice-writer]
+application-id='org.libreoffice.LibreOffice.writer.desktop'
+
+[notifications/application/org-libreoffice-libreoffice]
+application-id='org.libreoffice.LibreOffice.desktop'
+
+[notifications/application/org-localsend-localsend-app]
+application-id='org.localsend.localsend_app.desktop'
+
+[notifications/application/org-qbittorrent-qbittorrent]
+application-id='org.qbittorrent.qBittorrent.desktop'
+
+[notifications/application/org-upscayl-upscayl]
+application-id='org.upscayl.Upscayl.desktop'
+
+[notifications/application/protonvpn]
+application-id='protonvpn.desktop'
+
+[notifications/application/session-desktop]
+application-id='session-desktop.desktop'
+
+[notifications/application/signal-desktop]
+application-id='signal-desktop.desktop'
+
+[notifications/application/torbrowser]
+application-id='torbrowser.desktop'
+
+[notifications/application/vivaldi-stable]
+application-id='vivaldi-stable.desktop'
+
+[peripherals/keyboard]
+numlock-state=true
+
+[peripherals/mouse]
+accel-profile='default'
+natural-scroll=false
+speed=0.0
+
+[peripherals/touchpad]
+speed=0.0
+two-finger-scrolling-enabled=true
+
+[privacy]
+old-files-age=uint32 7
+recent-files-max-age=7
+remove-old-temp-files=true
+remove-old-trash-files=true
+
+[screen-time-limits]
+daily-limit-seconds=uint32 28800
+
+[screensaver]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/amber-l.jxl'
+primary-color='#ff7800'
+secondary-color='#000000'
+
+[search-providers]
+sort-order=['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']
+
+[sound]
+allow-volume-above-100-percent=false
+event-sounds=true
+theme-name='__custom'
+
+[wm/keybindings]
+close=['<Alt>F4', '<Super>q', '<Super>BackSpace']
+maximize=['<Super>Up']
+move-to-monitor-down=['<Super><Shift>Down']
+move-to-monitor-left=['<Super><Shift>Left']
+move-to-monitor-right=['<Super><Shift>Right']
+move-to-monitor-up=['<Super><Shift>Up']
+move-to-workspace-down=['<Control><Shift><Alt>Down']
+move-to-workspace-left=['<Super><Shift>Page_Up', '<Super><Shift>KP_Prior', '<Super><Shift><Alt>Left', '<Control><Shift><Alt>Left']
+move-to-workspace-right=['<Super><Shift>Page_Down', '<Super><Shift>KP_Next', '<Super><Shift><Alt>Right', '<Control><Shift><Alt>Right']
+move-to-workspace-up=['<Control><Shift><Alt>Up']
+switch-applications=['<Super>Tab', '<Alt>Tab']
+switch-applications-backward=['<Shift><Super>Tab', '<Shift><Alt>Tab']
+switch-group=['<Super>Above_Tab', '<Alt>Above_Tab']
+switch-group-backward=['<Shift><Super>Above_Tab', '<Shift><Alt>Above_Tab']
+switch-panels=['<Control><Alt>Tab']
+switch-panels-backward=['<Shift><Control><Alt>Tab']
+switch-to-workspace-1=['<Super>Home']
+switch-to-workspace-last=['<Super>End']
+switch-to-workspace-left=['<Super>Page_Up', '<Super>KP_Prior', '<Super><Alt>Left', '<Control><Alt>Left']
+switch-to-workspace-right=['<Super>Page_Down', '<Super>KP_Next', '<Super><Alt>Right', '<Control><Alt>Right']
+unmaximize=['<Super>Down', '<Alt>F5']
+
+[wm/preferences]
+action-middle-click-titlebar='none'
+button-layout='appmenu:minimize,maximize,close'
+visual-bell=false
+workspace-names=['         1', '         2', '         3', '         5', 'Workspace 5']

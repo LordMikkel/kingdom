@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OpenCode
+Comment=Open OpenCode in Ghostty
+Exec=/home/archer/Scripts/opencode-ghostty.sh
+Icon=/home/archer/Pictures/Icons/opencode-large.png
+Terminal=false
+Categories=Development;TerminalEmulator;
+StartupWMClass=com.opencode.OpenCode
+StartupNotify=true

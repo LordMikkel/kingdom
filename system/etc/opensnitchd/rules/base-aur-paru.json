@@ -1,0 +1,40 @@
+{
+  "created": "2026-10-19T00:00:00+02:00",
+  "updated": "2026-10-19T00:00:00+02:00",
+  "name": "base-aur-paru",
+  "description": "AUR metadata",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "/usr/bin/paru",
+        "type": "simple",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.host",
+        "data": "^aur\\.archlinux\\.org$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.port",
+        "data": "^443$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      }
+    ],
+    "sensitive": false
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

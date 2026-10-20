@@ -1,0 +1,13 @@
+[/]
+attach-modal-dialogs=true
+edge-tiling=true
+overlay-key='Super'
+workspaces-only-on-primary=true
+
+[keybindings]
+cancel-input-capture=['<Super><Shift>Escape']
+toggle-tiled-left=['<Super>Left']
+toggle-tiled-right=['<Super>Right']
+
+[wayland/keybindings]
+restore-shortcuts=['<Super>Escape']

@@ -1,0 +1,33 @@
+{
+  "created": "2026-10-19T00:00:00+02:00",
+  "updated": "2026-10-19T00:00:00+02:00",
+  "name": "base-dns",
+  "description": "DNS and DNS over TLS",
+  "action": "allow",
+  "duration": "always",
+  "operator": {
+    "operand": "list",
+    "data": "",
+    "type": "list",
+    "list": [
+      {
+        "operand": "process.path",
+        "data": "/usr/lib/systemd/systemd-resolved",
+        "type": "simple",
+        "list": null,
+        "sensitive": false
+      },
+      {
+        "operand": "dest.port",
+        "data": "^(53|853)$",
+        "type": "regexp",
+        "list": null,
+        "sensitive": false
+      }
+    ],
+    "sensitive": false
+  },
+  "enabled": true,
+  "precedence": false,
+  "nolog": false
+}

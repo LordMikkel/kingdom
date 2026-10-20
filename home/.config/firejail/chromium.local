@@ -1,0 +1,6 @@
+# Persist GPU shader caches so games/WebGL don't recompile shaders every launch
+ignore private-cache
+noblacklist ${HOME}/.cache/nvidia
+whitelist ${HOME}/.cache/nvidia
+noblacklist ${HOME}/.cache/mesa_shader_cache
+whitelist ${HOME}/.cache/mesa_shader_cache

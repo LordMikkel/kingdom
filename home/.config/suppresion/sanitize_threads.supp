@@ -1,0 +1,20 @@
+# GLib / GObject / Gnome / GTK
+called_from_lib:libglycin-2.so
+called_from_lib:libglib-2.0.so
+called_from_lib:libgio-2.0.so
+called_from_lib:libgobject-2.0.so
+called_from_lib:libgmodule-2.0.so
+called_from_lib:libffi.so
+
+# Wayland / X11
+called_from_lib:libwayland-client.so
+called_from_lib:libwayland-cursor.so
+called_from_lib:libwayland-egl.so
+called_from_lib:libX11.so
+called_from_lib:libXext.so
+
+# GLFW / OpenGL
+called_from_lib:libglfw.so
+called_from_lib:libGLX.so
+called_from_lib:libEGL.so
+called_from_lib:libGL.so

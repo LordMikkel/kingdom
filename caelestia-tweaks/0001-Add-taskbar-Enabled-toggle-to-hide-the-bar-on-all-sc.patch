@@ -1,0 +1,33 @@
+From d2ad938a6c6404bfcee1f3f4134d3b8ec2e1d0c5 Mon Sep 17 00:00:00 2001
+From: LordMikkel <125906789+LordMikkel@users.noreply.github.com>
+Date: Sun, 27 Sep 2026 17:55:19 +0200
+Subject: [PATCH 1/8] Add taskbar Enabled toggle to hide the bar on all screens
+
+---
+ modules/nexus/pages/panels/TaskbarPanel.qml | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/modules/nexus/pages/panels/TaskbarPanel.qml b/modules/nexus/pages/panels/TaskbarPanel.qml
+index 79f615e..83202f9 100644
+--- a/modules/nexus/pages/panels/TaskbarPanel.qml
++++ b/modules/nexus/pages/panels/TaskbarPanel.qml
+@@ -25,6 +25,16 @@ PageBase {
+ 
+         ToggleRow {
+             first: true
++            text: Tr.tr("Enabled")
++            subtext: Tr.tr("Show the taskbar on all screens")
++            checked: !Config.bar.excludedScreens.includes(".*")
++            onToggled: {
++                const others = GlobalConfig.bar.excludedScreens.filter(s => s !== ".*");
++                GlobalConfig.bar.excludedScreens = checked ? others : others.concat([".*"]);
++            }
++        }
++
++        ToggleRow {
+             text: Tr.tr("Persistent")
+             subtext: Tr.tr("Keep the bar visible at all times")
+             checked: Config.bar.persistent
+-- 
+2.56.0
+

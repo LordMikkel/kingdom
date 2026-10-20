@@ -1,0 +1,50 @@
+From 50ac769f60acdba0792baa61b8c9cbf450c904ac Mon Sep 17 00:00:00 2001
+From: LordMikkel <125906789+LordMikkel@users.noreply.github.com>
+Date: Sun, 27 Sep 2026 17:55:19 +0200
+Subject: [PATCH 2/8] Add Enabled and Show title toggles to active window
+ settings
+
+---
+ .../pages/panels/taskbar/BarActiveWindow.qml   | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/modules/nexus/pages/panels/taskbar/BarActiveWindow.qml b/modules/nexus/pages/panels/taskbar/BarActiveWindow.qml
+index 6ef77f2..10e155a 100644
+--- a/modules/nexus/pages/panels/taskbar/BarActiveWindow.qml
++++ b/modules/nexus/pages/panels/taskbar/BarActiveWindow.qml
+@@ -4,6 +4,7 @@ import QtQuick.Layouts
+ import Caelestia.Config
+ import Caelestia.I18n
+ import qs.modules.nexus.common
++import qs.utils
+ 
+ PageBase {
+     id: root
+@@ -18,7 +19,24 @@ PageBase {
+         spacing: Tokens.spacing.extraSmall / 2
+ 
+         ToggleRow {
++            readonly property int entryIndex: GlobalConfig.bar.entries.values.findIndex(e => e.id === "activeWindow")
++
+             first: true
++            text: Tr.tr("Enabled")
++            subtext: Tr.tr("Show the active window in the taskbar")
++            enabled: entryIndex >= 0
++            checked: Config.bar.entries.values.find(e => e.id === "activeWindow")?.enabled ?? false
++            onToggled: GlobalConfig.bar.entries.at(entryIndex).enabled = checked
++        }
++
++        ToggleRow {
++            text: Tr.tr("Show title")
++            subtext: Tr.tr("Show the window title next to the icon")
++            checked: Tweaks.activeWindowShowTitle
++            onToggled: Tweaks.activeWindowShowTitle = checked
++        }
++
++        ToggleRow {
+             text: Tr.trCtx("Compact", "taskbar active window layout")
+             checked: Config.bar.activeWindow.compact
+             onToggled: GlobalConfig.bar.activeWindow.compact = checked
+-- 
+2.56.0
+

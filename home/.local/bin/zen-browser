@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/doc/by-app/app.zen_browser.zen"
+exec /usr/bin/flatpak run app.zen_browser.zen --new-window

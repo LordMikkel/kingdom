@@ -1,0 +1,12 @@
+[Desktop Entry]
+# Caelestia's settings (Nexus) in the SUPER launcher. GNOME Settings is
+# hidden there because it only runs inside GNOME; GNOME hides this entry.
+Type=Application
+Name=Caelestia Settings
+GenericName=Settings
+Comment=Wallpaper, network, VPN, audio, Bluetooth
+Keywords=settings;preferences;nexus;caelestia;configuration;
+Icon=preferences-system
+Exec=qs -c caelestia ipc call nexus open
+OnlyShowIn=Hyprland;
+Categories=Settings;

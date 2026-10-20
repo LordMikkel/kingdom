@@ -1,0 +1,62 @@
+[plugins/color]
+night-light-enabled=false
+night-light-schedule-automatic=false
+night-light-schedule-from=22.0
+night-light-schedule-to=6.0
+night-light-temperature=uint32 4200
+
+[plugins/housekeeping]
+
+[plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/dictate-whisper/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/opencode/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/zen-browser/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/zen-browser-b/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/zed/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/files/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/settings/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/emoji/']
+rotate-video-lock-static=['XF86RotationLockToggle']
+
+[plugins/media-keys/custom-keybindings/dictate-whisper]
+binding='<Control><Shift>space'
+command='/home/archer/Scripts/dictate.sh'
+name='Voxtype Toggle'
+
+[plugins/media-keys/custom-keybindings/emoji]
+binding='<Super>period'
+command='gnome-characters'
+name='Emoji (Characters)'
+
+[plugins/media-keys/custom-keybindings/files]
+binding='<Super>e'
+command='nautilus --new-window'
+name='Files (Nautilus)'
+
+[plugins/media-keys/custom-keybindings/opencode]
+binding='<Super>a'
+command='/home/archer/Scripts/agent-ghostty.sh'
+name='AI Agent (Claude/OpenCode)'
+
+[plugins/media-keys/custom-keybindings/settings]
+binding='<Super>o'
+command='gnome-control-center'
+name='GNOME Settings'
+
+[plugins/media-keys/custom-keybindings/terminal]
+binding='<Super>t'
+command='/usr/bin/ghostty --gtk-single-instance=true'
+name='Terminal'
+
+[plugins/media-keys/custom-keybindings/zed]
+binding='<Super>c'
+command='/usr/bin/zeditor'
+name='Zed'
+
+[plugins/media-keys/custom-keybindings/zen-browser-b]
+binding='<Super>b'
+command='/home/archer/.local/bin/zen-browser'
+name='Zen Browser (Super+B)'
+
+[plugins/media-keys/custom-keybindings/zen-browser]
+binding='<Super>s'
+command='/home/archer/.local/bin/zen-browser'
+name='Zen Browser'
+
+[plugins/power]
+power-button-action='interactive'
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='nothing'

@@ -1,0 +1,16 @@
+[Trigger]
+# Trigger the hook when the package is installed or upgraded
+Operation = Upgrade
+Operation = Install
+Type = Package
+Target = hardened_malloc
+
+[Action]
+Description = Updating local copy of hardened_malloc for Flatpaks...
+When = PostTransaction
+# Command explanation:
+# /usr/bin/install : Utility to copy files and set attributes (safer than 'cp')
+# -D : Creates the destination directory if it is missing (mkdir -p behavior)
+# -m 755 : Sets permissions to rwxr-xr-x (Execution bit is REQUIRED for LD_PRELOAD)
+# -o archer -g archer : Forces ownership to your user (prevents root-owned files in /home)
+Exec = /usr/bin/sh -c '/usr/bin/install -D -m 755 -o archer -g archer /usr/lib/libhardened_malloc.so /home/archer/.local/lib/hardened_malloc/libhardened_malloc.so && /usr/bin/install -D -m 755 -o archer -g archer /usr/lib/libhardened_malloc-light.so /home/archer/.local/lib/hardened_malloc/libhardened_malloc-light.so'

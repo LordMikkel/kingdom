@@ -1,0 +1,101 @@
+From fcafc7087fdacea98b653c98c0be260ed61b870e Mon Sep 17 00:00:00 2001
+From: LordMikkel <125906789+LordMikkel@users.noreply.github.com>
+Date: Sun, 27 Sep 2026 17:55:49 +0200
+Subject: [PATCH 5/8] Translate TWEAKS.md to English
+
+---
+ TWEAKS.md | 60 +++++++++++++++++++++++++++----------------------------
+ 1 file changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/TWEAKS.md b/TWEAKS.md
+index d1c5386..44d3bd6 100644
+--- a/TWEAKS.md
++++ b/TWEAKS.md
+@@ -1,54 +1,54 @@
+-# Tweaks locales de Caelestia
++# Local Caelestia tweaks
+ 
+-Esta carpeta es una copia de `/etc/xdg/quickshell/caelestia` (paquete
+-`caelestia-shell`). Quickshell la carga en lugar de la original.
++This folder is a copy of `/etc/xdg/quickshell/caelestia` (package
++`caelestia-shell`). Quickshell loads it instead of the original.
+ 
+-## Cómo está organizado
++## Layout
+ 
+-Es un repositorio git con dos ramas:
++It is a git repository with two branches:
+ 
+-- `upstream`: el shell tal cual viene del paquete, sin tocar.
+-- `main`: `upstream` + un commit por cada tweak. Es la rama activa.
++- `upstream`: the shell exactly as shipped by the package, untouched.
++- `main`: `upstream` + one commit per tweak. This is the active branch.
+ 
+-`git log --oneline upstream..main` lista los tweaks y
+-`git diff upstream main` muestra todos los cambios.
++`git log --oneline upstream..main` lists the tweaks and
++`git diff upstream main` shows every change.
+ 
+-## Después de actualizar caelestia-shell
++## After updating caelestia-shell
+ 
+ ```sh
+ ~/.config/quickshell/caelestia/sync-upstream.sh
+ ```
+ 
+-El script copia la versión nueva a `upstream` y hace `rebase` de `main`
+-encima. Si upstream tocó las mismas líneas habrá conflictos: se resuelven a
+-mano (`git status` los muestra), y luego `git add` + `git rebase --continue`.
+-Con `git rebase --abort` se vuelve al estado anterior.
++The script copies the new version into `upstream` and rebases `main` on top
++of it. If upstream changed the same lines there will be conflicts: resolve
++them by hand (`git status` lists them), then `git add` +
++`git rebase --continue`. `git rebase --abort` goes back to the previous state.
+ 
+-Luego reinicia el shell (cierra sesión o `qs kill -c caelestia` y vuelve a
+-lanzarlo).
++Then restart the shell (log out, or `qs kill -c caelestia` and launch it
++again).
+ 
+-Para volver al Caelestia original basta con borrar esta carpeta.
++To go back to stock Caelestia, just delete this folder.
+ 
+ ## Tweaks
+ 
+-### Ajustes → Panels → Taskbar → Enabled
+-Oculta la barra entera en todas las pantallas. Añade/quita `".*"` en
+-`bar.excludedScreens` de `~/.config/caelestia/shell.json`.
++### Settings → Panels → Taskbar → Enabled
++Hides the whole bar on all screens. Adds/removes `".*"` in
++`bar.excludedScreens` in `~/.config/caelestia/shell.json`.
+ - `modules/nexus/pages/panels/TaskbarPanel.qml`
+ 
+-### Ajustes → Panels → Taskbar → Active window → Enabled
+-Activa/desactiva el módulo de ventana activa (`bar.entries`, id
++### Settings → Panels → Taskbar → Active window → Enabled
++Enables/disables the active window module (`bar.entries`, id
+ `activeWindow`).
+ - `modules/nexus/pages/panels/taskbar/BarActiveWindow.qml`
+ 
+-### Ajustes → Panels → Taskbar → Active window → Show title
+-Muestra solo el icono de la ventana activa, sin el título. El esquema de
+-`shell.json` está compilado y no admite claves nuevas, así que se guarda en
++### Settings → Panels → Taskbar → Active window → Show title
++Shows only the active window icon, without the title. The `shell.json`
++schema is compiled in and does not accept new keys, so this is stored in
+ `~/.config/caelestia/tweaks.json` (`activeWindowShowTitle`).
+-- `utils/Tweaks.qml` (nuevo): singleton que lee/escribe `tweaks.json`
+-- `modules/bar/components/ActiveWindow.qml`: oculta el título y ajusta la altura
+-- `modules/nexus/pages/panels/taskbar/BarActiveWindow.qml`: el interruptor
++- `utils/Tweaks.qml` (new): singleton that reads/writes `tweaks.json`
++- `modules/bar/components/ActiveWindow.qml`: hides the title and adjusts height
++- `modules/nexus/pages/panels/taskbar/BarActiveWindow.qml`: the toggle
+ 
+-## Añadir un tweak nuevo
++## Adding a new tweak
+ 
+-Edita los archivos, documenta el cambio aquí y haz commit en `main`.
++Edit the files, document the change here and commit on `main`.
+-- 
+2.56.0
+

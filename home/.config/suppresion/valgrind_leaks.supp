@@ -1,0 +1,70 @@
+{
+	ignore_libglfw
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libglfw.so*
+}
+{
+	ignore_libwayland
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libwayland*
+}
+{
+	ignore_libgtk
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libgtk-3.so*
+}
+{
+	ignore_libgdk
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libgdk-3.so*
+}
+{
+	ignore_libpango
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libpango*
+}
+{
+	ignore_libfontconfig
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libfontconfig.so*
+}
+{
+	ignore_libglib
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libglib*
+}
+{
+	ignore_libdbus
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libdbus*
+}
+{
+	ignore_libdecor
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libdecor*
+}
+{
+	ignore_drivers_nvidia_mesa
+	Memcheck:Leak
+	match-leak-kinds: all
+	...
+	obj:*/libGLX*
+}

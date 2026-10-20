@@ -1,0 +1,7 @@
+status-area-horizontal-spacing@mathematical.coffee.gmail.com
+drive-menu@gnome-shell-extensions.gcampax.github.com
+Vitals@CoreCoding.com
+appindicatorsupport@rgcjonas.gmail.com
+app-hider@lynith.dev
+simple-taskbar@sultech
+IP-Finder@linxgem33.com

@@ -1,0 +1,10 @@
+[Unit]
+Description=Check voxtype for its audio error loop every minute
+
+[Timer]
+OnStartupSec=1min
+OnUnitActiveSec=1min
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target

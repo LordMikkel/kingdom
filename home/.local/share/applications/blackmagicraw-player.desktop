@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Blackmagic RAW Player
+Icon=blackmagicraw-player
+Path=/opt/resolve/BlackmagicRAWPlayer/
+Exec=/opt/resolve/BlackmagicRAWPlayer/BlackmagicRAWPlayer %f
+Terminal=false
+MimeType=application/x-braw-clip;application/x-braw-sidecar
+Categories=Video
+NotShowIn=Hyprland;
+X-Hypr-Hidden=true

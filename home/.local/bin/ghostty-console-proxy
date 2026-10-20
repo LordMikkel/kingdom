@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+import os
+import subprocess
+import sys
+from urllib.parse import unquote, urlparse
+
+from gi.repository import Gio, GLib
+
+
+APP_ID = "org.gnome.Console"
+OBJECT_PATH = "/org/gnome/Console"
+LOG_PATH = "/tmp/ghostty-console-proxy.log"
+
+INTROSPECTION_XML = """
+<node>
+  <interface name="org.freedesktop.Application">
+    <method name="Activate">
+      <arg type="a{sv}" name="platform_data" direction="in"/>
+    </method>
+    <method name="Open">
+      <arg type="as" name="uris" direction="in"/>
+      <arg type="a{sv}" name="platform_data" direction="in"/>
+    </method>
+    <method name="ActivateAction">
+      <arg type="s" name="action_name" direction="in"/>
+      <arg type="av" name="parameter" direction="in"/>
+      <arg type="a{sv}" name="platform_data" direction="in"/>
+    </method>
+  </interface>
+  <interface name="org.gtk.Application">
+    <method name="Activate">
+      <arg type="a{sv}" name="platform_data" direction="in"/>
+    </method>
+    <method name="Open">
+      <arg type="as" name="uris" direction="in"/>
+      <arg type="s" name="hint" direction="in"/>
+      <arg type="a{sv}" name="platform_data" direction="in"/>
+    </method>
+    <method name="CommandLine">
+      <arg type="o" name="path" direction="in"/>
+      <arg type="aay" name="arguments" direction="in"/>
+      <arg type="a{sv}" name="platform_data" direction="in"/>
+      <arg type="i" name="exit_status" direction="out"/>
+    </method>
+  </interface>
+</node>
+"""
+
+
+def log(message):
+    with open(LOG_PATH, "a", encoding="utf-8") as log_file:
+        log_file.write(f"{message}\n")
+
+
+def uri_to_path(uri):
+    if uri and uri.startswith("file://"):
+        return unquote(urlparse(uri).path)
+    return uri
+
+
+def path_to_directory(path):
+    if not path:
+        return os.path.expanduser("~")
+    if os.path.isdir(path):
+        return path
+    return os.path.dirname(path) or os.path.expanduser("~")
+
+
+def launch_ghostty(directory=None):
+    directory = path_to_directory(directory)
+    env = os.environ.copy()
+    env["GHOSTTY_OPENED_FROM_FILES"] = "1"
+    log(f"launch directory={directory}")
+    subprocess.Popen(
+        [
+            "/usr/bin/ghostty",
+            f"--working-directory={directory}",
+        ],
+        cwd=directory,
+        env=env,
+        start_new_session=True,
+    )
+
+
+def handle_method_call(connection, sender, object_path, interface_name, method_name, parameters, invocation):
+    log(f"call interface={interface_name} method={method_name} parameters={parameters}")
+
+    if method_name == "Open":
+        unpacked = parameters.unpack()
+        uris = unpacked[0] if unpacked else []
+        launch_ghostty(uri_to_path(uris[0]) if uris else None)
+        invocation.return_value(None)
+        GLib.timeout_add_seconds(2, loop.quit)
+        return
+
+    if method_name in ("Activate", "ActivateAction"):
+        launch_ghostty()
+        invocation.return_value(None)
+        GLib.timeout_add_seconds(2, loop.quit)
+        return
+
+    if method_name == "CommandLine":
+        launch_ghostty()
+        invocation.return_value(GLib.Variant("(i)", (0,)))
+        GLib.timeout_add_seconds(2, loop.quit)
+        return
+
+    invocation.return_error_literal(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_SUPPORTED, "Unsupported method")
+
+
+def on_bus_acquired(connection, name):
+    node_info = Gio.DBusNodeInfo.new_for_xml(INTROSPECTION_XML)
+    for interface_info in node_info.interfaces:
+        connection.register_object(
+            OBJECT_PATH,
+            interface_info,
+            handle_method_call,
+            None,
+            None,
+        )
+    log("proxy registered")
+
+
+def on_name_lost(connection, name):
+    log("name lost")
+    loop.quit()
+
+
+loop = GLib.MainLoop()
+
+
+def main():
+    log("proxy start")
+    Gio.bus_own_name(
+        Gio.BusType.SESSION,
+        APP_ID,
+        Gio.BusNameOwnerFlags.ALLOW_REPLACEMENT | Gio.BusNameOwnerFlags.REPLACE,
+        on_bus_acquired,
+        None,
+        on_name_lost,
+    )
+    loop.run()
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

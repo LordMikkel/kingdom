@@ -1,0 +1,84 @@
+From ec8ab0f8530f7cd3a1617521e8410986784c39f3 Mon Sep 17 00:00:00 2001
+From: LordMikkel <125906789+LordMikkel@users.noreply.github.com>
+Date: Wed, 30 Sep 2026 03:39:27 +0200
+Subject: [PATCH 7/8] Lock: blurred wallpaper under the screencopy, skip dead
+ screens
+
+---
+ TWEAKS.md                    |  8 ++++++++
+ modules/lock/LockSurface.qml | 24 ++++++++++++++----------
+ 2 files changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/TWEAKS.md b/TWEAKS.md
+index 44d3bd6..9440a57 100644
+--- a/TWEAKS.md
++++ b/TWEAKS.md
+@@ -49,6 +49,14 @@ schema is compiled in and does not accept new keys, so this is stored in
+ - `modules/bar/components/ActiveWindow.qml`: hides the title and adjusts height
+ - `modules/nexus/pages/panels/taskbar/BarActiveWindow.qml`: the toggle
+ 
++### Lock screen: wallpaper fallback behind the screencopy
++The blurred wallpaper always sits under the screen capture, so a capture
++that gets no frame (monitor off or going away) no longer shows the unblurred
++desktop through the lock (`session_lock_xray`). Screens that are not
++Wayland-backed are not captured at all, which can crash Hyprland <= 0.56.2
++(upstream issue #1814). Meant to go upstream as a PR.
++- `modules/lock/LockSurface.qml`
++
+ ## Adding a new tweak
+ 
+ Edit the files, document the change here and commit on `main`.
+diff --git a/modules/lock/LockSurface.qml b/modules/lock/LockSurface.qml
+index 58dfa6b..8577710 100644
+--- a/modules/lock/LockSurface.qml
++++ b/modules/lock/LockSurface.qml
+@@ -2,6 +2,7 @@ pragma ComponentBehavior: Bound
+ 
+ import QtQuick
+ import QtQuick.Effects
++import Quickshell
+ import Quickshell.Wayland
+ import Caelestia.Config
+ import qs.components
+@@ -170,9 +171,18 @@ WlSessionLockSurface {
+             blurMultiplier: 1
+         }
+ 
++        // Always under the screencopy, so the lock never shows the unblurred
++        // desktop (session_lock_xray) when the capture gets no frame, e.g. the
++        // monitor was off or went away while locking
++        CachingImage {
++            anchors.fill: parent
++            path: Wallpapers.current
++        }
++
+         Loader {
+             anchors.fill: parent
+-            sourceComponent: Config.lock.useWallpaper ? wallpaperBackground : screencopyBackground
++            active: !Config.lock.useWallpaper
++            sourceComponent: screencopyBackground
+         }
+     }
+ 
+@@ -180,15 +190,9 @@ WlSessionLockSurface {
+         id: screencopyBackground
+ 
+         ScreencopyView {
+-            captureSource: root.screen
+-        }
+-    }
+-
+-    Component {
+-        id: wallpaperBackground
+-
+-        CachingImage {
+-            path: Wallpapers.current
++            // Screens that are not Wayland-backed (off or being removed) cannot
++            // be captured, and asking can crash Hyprland <= 0.56.2 (#1814)
++            captureSource: Quickshell.screens.includes(root.screen) ? root.screen : null
+         }
+     }
+ 
+-- 
+2.56.0
+

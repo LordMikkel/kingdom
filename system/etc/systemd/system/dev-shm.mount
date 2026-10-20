@@ -1,0 +1,15 @@
+[Unit]
+Description=POSIX Shared Memory File System
+Documentation=man:hier(7)
+DefaultDependencies=no
+Before=sysinit.target
+ConditionPathExists=/dev/shm
+
+[Mount]
+What=tmpfs
+Where=/dev/shm
+Type=tmpfs
+Options=mode=1777,nosuid,nodev
+
+[Install]
+WantedBy=sysinit.target

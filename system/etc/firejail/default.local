@@ -1,0 +1,26 @@
+# Global privacy rules
+
+# Hardened Malloc Injection
+env LD_PRELOAD=/usr/lib/libhardened_malloc.so
+
+# Cryptography and Hardware Wallets
+blacklist ${HOME}/.config/Ledger Live
+blacklist ${HOME}/.config/Ledger Wallet
+
+# Messaging and Password Managers
+blacklist ${HOME}/.config/Signal
+blacklist ${HOME}/.config/Proton
+blacklist ${HOME}/.config/Proton Pass
+
+# Pentesting and Security Tools
+blacklist ${HOME}/.BurpSuite
+blacklist ${HOME}/.john
+blacklist ${HOME}/.config/nuclei
+blacklist ${HOME}/.config/feroxbuster
+blacklist ${HOME}/.config/ffuf
+
+# AI and Development
+blacklist ${HOME}/.claude
+blacklist ${HOME}/.claude.json
+blacklist ${HOME}/.copilot
+blacklist ${HOME}/.Private

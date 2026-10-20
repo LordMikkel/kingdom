@@ -1,0 +1,11 @@
+gnome-keyring-daemon.socket
+ollama.service
+p11-kit-server.socket
+pipewire-pulse.socket
+pipewire.service
+pipewire.socket
+speech-dispatcher.socket
+voxtype.service
+voxtype-watchdog.timer
+wireplumber.service
+xdg-user-dirs.service

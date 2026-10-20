@@ -1,0 +1,14 @@
+#Ignore leaks from Dependencies
+leak:libglfw
+leak:libdecor
+leak:libwayland
+leak:libgtk
+leak:libgdk
+leak:libpango
+leak:libfontconfig
+leak:libglib
+leak:libgobject
+leak:libX11
+leak:libdl
+leak:_dl_open
+leak:???
